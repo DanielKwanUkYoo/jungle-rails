@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @items = LineItem.select("product_id").joins(:order)
+    @total_items = @items.count
+    
 
   end
 

@@ -4,14 +4,18 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
   <ul>
+    <% @total = 0 %>
     <% @order.line_items.each do |line_item| %>
 
-          <li><%= line_item.product.name %></li>
-          <li><%= line_item.product.description %></li>
-          <li><%= image_tag(line_item.product.image, :size => "100x100") %></li>
-          
+      <h1><%= line_item.product.name %></h1>
+      <li><%= line_item.product.description %></li>
+      <li><%= image_tag(line_item.product.image, :size => "100x100") %></li>
+      <% @total += line_item.total_price_cents %>
 
     <% end %>
+    <li>Total number of items ordered: <%= @total_items %></li>
+    <li>This is the E-mail: <%= current_user.E_mail %></li>
+    <li>This is the Total amount: <%= @total %></li>
   </ul>
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
