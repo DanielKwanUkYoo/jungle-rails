@@ -2,22 +2,25 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @items = LineItem.select("product_id").joins(:order)
+    @items = @order.line_items
     @total_items = @items.count
-    
-
   end
 
   def create
+    @user = User.find(session[:user_id])
+   
     charge = perform_stripe_charge
     order  = create_order(charge)
 
     if order.valid?
       empty_cart!
+      
+      UserMailer.confirmation_email(@user.E_mail, order).deliver_now
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
+
 
   rescue Stripe::CardError => e
     redirect_to cart_path, flash: { error: e.message }

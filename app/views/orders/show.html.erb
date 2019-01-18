@@ -15,7 +15,7 @@
     <% end %>
     <li>Total number of items ordered: <%= @total_items %></li>
     <li>This is the E-mail: <%= current_user.E_mail %></li>
-    <li>This is the Total amount: <%= @total %></li>
+    <li>This is the Total amount: <%= humanized_money_with_symbol @total / 100 %></li>
   </ul>
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
