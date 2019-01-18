@@ -132,5 +132,25 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+Rating.create!({
+  user_id: 1,
+  product_id: 1,
+  description: Faker::Hipster.paragraph(1),
+  rating: 4
+})
+
+Rating.create!({
+  user_id: 2,
+  product_id: 2,
+  description: Faker::Hipster.paragraph(1),
+  rating: 3
+})
+
+Rating.create!({
+  user_id: 3,
+  product_id: 3,
+  description: Faker::Hipster.paragraph(1),
+  rating: 5
+})
 
 puts "DONE!"

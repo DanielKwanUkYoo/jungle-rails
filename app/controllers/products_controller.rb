@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
+    @product_review = Rating.find_by :produdct_id == params[:id]
   end
 
  
