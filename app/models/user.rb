@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  belongs_to :rating
+  has_many :ratings
 
   validates :first_name, presence: true
   validates :last_name, presence: true

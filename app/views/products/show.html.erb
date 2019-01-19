@@ -25,6 +25,13 @@
         </dl>
       </div>
     </div>
+
+    <%= form_for @review, url: product_reviews_path(@product) do |f| %>
+      Leave Review for this product: </br><%= f.text_area :description %></br>
+      Rating <%= f.select :rating, [['1'], ['2'], ['3'], ['4'], ['5']] %></br>
+      <%= f.submit 'Rate!' %></br>
+    <% end %></br>
+
     <div class="row">
       <table class= "table table-bordered" width="100%">
         <tr>
@@ -32,12 +39,17 @@
           <th>Rating</th>
         </tr>
         <tr>
-          <td><%=@product_review.description%></th>
-          <td><%=@product_review.rating%></th>
+          <% @product_reviews.each do |review| %>
+          <td><%=review.description%></td>
+          <td><%=review.rating%></td>
+          <% if @user.id == review.user_id %>
+            <%= button_to "delete", "/products/#{@product.id}/reviews", :method => :delete, data: {confirm: "are you sure?"} %>
+          <% end %>
+        <% end %>
         </tr>
       </table>
     </div>
-
+    
   </article>
 
 </section>

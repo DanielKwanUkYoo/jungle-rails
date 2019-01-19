@@ -1,8 +1,9 @@
 class Rating < ActiveRecord::Base
-    has_many :products
-    has_many :users
+    belongs_to :product
+    belongs_to :user
 
     validates :user_id, presence: true
     validates :product_id, presence: true
+    validates :description, presence: true
 
 end
