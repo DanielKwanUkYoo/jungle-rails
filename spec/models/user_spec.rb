@@ -18,6 +18,8 @@ RSpec.describe User, type: :model do
         password_confirmation: "1234567"
       )
     end
+    
+
 
     describe 'Validations' do
       it 'should have firstname' do
@@ -44,5 +46,37 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "1"
         expect(@user).to_not be_valid
       end
+    end
+
+    describe '.authenticate_with_credentials' do
+
+      it 'should correctly login with correct email/password' do
+        email = @user.E_mail
+        password = @user.password 
+        authenticate = @user.authenticate_with_credentials(email, password)
+        expect(authenticate).to be true
+      end
+
+      it 'should correctly login with uppercase' do
+        email = @user.E_mail.upcase
+        password = @user.password
+        authenticate = @user.authenticate_with_credentials(email, password)
+        expect(authenticate).to be true
+      end
+
+      it 'should correctly login with empty space in the front and the end' do
+        email = " b@b "
+        password = @user.password
+        authenticate = @user.authenticate_with_credentials(email, password)
+        expect(authenticate).to be true
+      end
+        # visit 'session#new'
+        # fill_in "E-mail", :with => @user.E_mail
+        # fill_in "Password", :with => @user.password
+        # click_button "Submit"
+        # get "index"
+        # response.should be_success
+      
+    
     end
 end
