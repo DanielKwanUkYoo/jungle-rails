@@ -12,6 +12,10 @@ RSpec.describe Product, type: :model do
     end
     
     describe 'Validations' do
+        it 'should be valid with all valid attr' do
+            expect(@product).to be_valid
+        end
+        
         it 'should have name' do
             @product.name = nil
             expect(@product).to_not be_valid
