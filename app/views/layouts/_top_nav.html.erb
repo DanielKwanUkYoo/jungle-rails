@@ -45,11 +45,11 @@
           <% end %>
         </li>
         <% if current_user %>
-          <p>signed in as</p><%= current_user.E_mail %>
-          <%= link_to 'Logout', logout_path, class: "button"%>
+          <li class="welcome-msg">Welcome <%= current_user.E_mail %></li>
+          <li><%= link_to 'Logout', logout_path, class: "button"%></li>
         <% else %>
-          <%= link_to 'Register', signup_path, class: "button"%>
-          <%= link_to 'Login', login_path, class: "button"%>
+          <li><%= link_to 'Register', signup_path, class: "button"%></li>
+          <li><%= link_to 'Login', login_path, class: "button"%></li>
         <% end %>
       </ul>
       

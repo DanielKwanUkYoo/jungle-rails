@@ -90,4 +90,34 @@ main section.products-show {
   }
 }
 
+.welcome-msg {
+  color: #777;
+  margin-top: 15px;
+}
 
+.row-rating-container {
+  text-align: center;
+  font-weight: 500;
+}
+
+.new_rating textarea {
+  resize: none;
+  border-radius: 5px;
+  width: 50%;
+  height: 80px;
+}
+
+.rate-submit {
+  border-radius: 5px;
+  background-color: #337ab7;
+  color: white;
+  height: 2em;
+  width: 5em;
+}
+
+.rate-delete {
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  float: right;
+}
