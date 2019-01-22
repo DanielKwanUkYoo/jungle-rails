@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     email = email.strip.downcase
     @user = User.find_by_E_mail(email)
     if @user && @user.authenticate(password)
-      true
+      @user
     else
       false
     end
