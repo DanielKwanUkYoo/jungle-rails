@@ -41,7 +41,9 @@
         <% @product_reviews.each do |review| %>
           <tr>
             <td><%=review.description%></td>
-            <td><%=review.rating %><% if @user.id == review.user_id %>
+            <td><%=review.rating %>
+            <% @user = User.find(session[:user_id]) %>
+            <% if @user.id == review.user_id %>
             <%= button_to "delete", "/products/#{@product.id}/reviews", :method => :delete, data: {confirm: "are you sure?"}, :class => 'rate-delete' %>
             <% end %>
             </td>

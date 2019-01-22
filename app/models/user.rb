@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :ratings
-  def authenticate_with_credentials(email, password)
+  def self.authenticate_with_credentials(email, password)
     email = email.strip.downcase
-    user = User.find_by_E_mail(email)
-    if user && user.authenticate(password)
+    @user = User.find_by_E_mail(email)
+    if @user && @user.authenticate(password)
       true
     else
       false

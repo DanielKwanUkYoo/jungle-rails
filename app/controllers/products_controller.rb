@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    
     @product = Product.find params[:id]
     @product_reviews = @product.ratings
 
